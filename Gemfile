@@ -15,6 +15,7 @@ gem "bootsnap", ">= 1.1.0", require: false
 
 group :development, :test do
   gem "rspec-rails", "~> 3.7"
+  gem "rspec_junit_formatter", "~> 0.3"
   gem "rubocop", "~> 0.55.0", require: false
   gem "rubocop-rails", "~> 1.4.0", require: false
 end
