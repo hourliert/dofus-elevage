@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class MountGenerationTest < ActiveSupport::TestCase
+class GenerationTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class MountFamilyTest < ActiveSupport::TestCase
+class GenerationsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
