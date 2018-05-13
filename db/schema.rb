@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_180_509_162_334) do
+ActiveRecord::Schema.define(version: 2018_05_13_144106) do
+
   create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -25,6 +24,7 @@ ActiveRecord::Schema.define(version: 20_180_509_162_334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "family_id"
+    t.integer "level"
     t.index ["family_id"], name: "index_generations_on_family_id"
   end
 
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20_180_509_162_334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["child_id"], name: "fk_rails_513aa2e58b"
-    t.index %w[mount_id parent_id child_id], name: "index_relations_on_mount_id_and_parent_id_and_child_id", unique: true
+    t.index ["mount_id", "parent_id", "child_id"], name: "index_relations_on_mount_id_and_parent_id_and_child_id", unique: true
     t.index ["parent_id"], name: "fk_rails_624c1d56dd"
   end
 

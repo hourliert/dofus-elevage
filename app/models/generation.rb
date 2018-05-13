@@ -2,11 +2,5 @@
 
 class Generation < ApplicationRecord
   belongs_to :family
-  has_many :mounts
-
-  def tutu; end
-
-  def toto
-    tutu
-  end
+  has_many :mounts, dependent: :destroy
 end
