@@ -2,7 +2,12 @@
 
 class Mount < ApplicationRecord
   belongs_to :generation
-  has_many :relations, dependent: :destroy
-  has_many :children, through: :relations, foreign_key: "child_id"
-  has_many :parents, through: :relations, foreign_key: "parent_id"
+  has_many :child_relations, dependent: :destroy
+  has_many :parent_relations, dependent: :destroy
+  has_many :children, through: :child_relations, source: :related
+  has_many :parents, through: :parent_relations, source: :related
+
+  MALE = "MALE".freeze
+  FEMALE = "FEMALE".freeze
+  SEXES = [MALE, FEMALE].freeze
 end

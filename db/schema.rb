@@ -10,27 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_13_144106) do
+ActiveRecord::Schema.define(version: 2018_05_14_203909) do
 
   create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "generations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "family_id"
-    t.integer "level"
+    t.integer "level", null: false
     t.index ["family_id"], name: "index_generations_on_family_id"
   end
 
   create_table "mounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.boolean "sexe"
+    t.string "sexe", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "generation_id"
@@ -38,19 +38,17 @@ ActiveRecord::Schema.define(version: 2018_05_13_144106) do
   end
 
   create_table "relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type"
     t.bigint "mount_id"
-    t.bigint "parent_id"
-    t.bigint "child_id"
+    t.bigint "related_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["child_id"], name: "fk_rails_513aa2e58b"
-    t.index ["mount_id", "parent_id", "child_id"], name: "index_relations_on_mount_id_and_parent_id_and_child_id", unique: true
-    t.index ["parent_id"], name: "fk_rails_624c1d56dd"
+    t.index ["mount_id", "related_id"], name: "index_relations_on_mount_id_and_related_id", unique: true
+    t.index ["related_id"], name: "fk_rails_c291677f55"
   end
 
   add_foreign_key "generations", "families"
   add_foreign_key "mounts", "generations"
   add_foreign_key "relations", "mounts"
-  add_foreign_key "relations", "mounts", column: "child_id"
-  add_foreign_key "relations", "mounts", column: "parent_id"
+  add_foreign_key "relations", "mounts", column: "related_id"
 end

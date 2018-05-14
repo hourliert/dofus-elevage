@@ -149,3 +149,9 @@ Generation.create([
   { name: "TURQUOISE_PLUM", level: 8, family: seemyool },
   { name: "EMERALD_PLUM", level: 8, family: seemyool },
 ])
+
+child = Mount.create!(name: "Child", sexe: "MALE", generation: Generation.first)
+father = Mount.create!(name: "Father", sexe: "MALE", generation: Generation.first)
+
+ParentRelation.create!(mount: child, related: father)
+ChildRelation.create!(mount: father, related: child)
