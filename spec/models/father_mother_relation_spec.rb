@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe ParentRelation, type: :model do
+RSpec.describe FatherMotherRelation, type: :model do
 
 end
