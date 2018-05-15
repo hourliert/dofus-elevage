@@ -150,8 +150,7 @@ Generation.create([
   { name: "EMERALD_PLUM", level: 8, family: seemyool },
 ])
 
-child = Mount.create!(name: "Child", sexe: "MALE", generation: Generation.first)
-father = Mount.create!(name: "Father", sexe: "MALE", generation: Generation.first)
-
-ParentRelation.create!(mount: child, related: father)
-ChildRelation.create!(mount: father, related: child)
+mother = Breeding::Commands::CreateMount.run!(name: "Mother", sexe: "FEMALE", generation: Generation.first)
+father = Breeding::Commands::CreateMount.run!(name: "Father", sexe: "MALE", generation: Generation.first)
+boy = Breeding::Commands::CreateChild.run!(name: "Child", generation: Generation.first, father: father, mother: mother)
+Breeding::Commands::CreateChild.run!(name: "Child2", generation: Generation.first, father: boy, mother: mother)

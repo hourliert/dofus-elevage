@@ -2,12 +2,20 @@
 
 class Mount < ApplicationRecord
   belongs_to :generation
-  has_many :child_relations, dependent: :destroy
-  has_many :parent_relations, dependent: :destroy
-  has_many :children, through: :child_relations, source: :related
-  has_many :parents, through: :parent_relations, source: :related
+  has_many :child_parent_relations, dependent: :destroy, class_name: "ParentChildRelation", foreign_key: "second_mount_id", inverse_of: :mount
+  has_many :parent_child_relations, dependent: :destroy, foreign_key: "first_mount_id", inverse_of: :mount
+  has_many :children, through: :child_parent_relations, source: :first_mount
+  has_many :parents, through: :parent_child_relations, source: :second_mount
 
   MALE = "MALE".freeze
   FEMALE = "FEMALE".freeze
   SEXES = [MALE, FEMALE].freeze
+
+  def father
+    parents.find_by(sexe: MALE)
+  end
+
+  def mother
+    parents.find_by(sexe: FEMALE)
+  end
 end

@@ -5,8 +5,6 @@ class CreateMounts < ActiveRecord::Migration[5.2]
     create_table :mounts do |t|
       t.string :name
       t.boolean :sexe
-      t.string :kind
-      t.string :race
 
       t.timestamps
     end
