@@ -17,8 +17,8 @@ module Breeding
       def execute
         Mount.transaction do
           child = CreateMount.run!(name: name, generation: generation, sexe: sexe)
-          ParentChildRelation.create!(first_mount: father, second_mount: child)
-          ParentChildRelation.create!(first_mount: mother, second_mount: child)
+          FamilyRelation.create!(first_mount: father, second_mount: child)
+          FamilyRelation.create!(first_mount: mother, second_mount: child)
           child
         end
       end

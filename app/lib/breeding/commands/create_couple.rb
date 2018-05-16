@@ -9,7 +9,7 @@ module Breeding
       end
 
       def execute
-        FatherMotherRelation.create!(first_mount: father, second_mount: mother)
+        CoupleRelation.create!(first_mount: father, second_mount: mother)
       end
     end
   end

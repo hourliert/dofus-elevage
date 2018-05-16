@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe ParentChildRelation, type: :model do
+RSpec.describe CoupleRelation, type: :model do
 
 end

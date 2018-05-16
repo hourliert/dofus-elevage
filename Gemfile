@@ -14,10 +14,15 @@ gem "mutations", "~> 0.8.2"
 gem "bootsnap", ">= 1.1.0", require: false
 
 group :development, :test do
+  gem "pry-rails", "~> 0.3.6"
   gem "rspec-rails", "~> 3.7"
   gem "rspec_junit_formatter", "~> 0.3"
   gem "rubocop", "~> 0.55.0", require: false
   gem "rubocop-rails", "~> 1.4.0", require: false
+end
+
+group :development, :test, :console do
+  gem "awesome_print", "~> 1.8.0"
 end
 
 group :development do
