@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2018_05_14_203909) do
     t.index ["first_mount_id"], name: "fk_rails_8c7c6be751"
     t.index ["second_mount_id"], name: "fk_rails_90fec573f8"
     t.index ["type", "first_mount_id", "second_mount_id"], name: "index_relations_on_type_and_first_mount_id_and_second_mount_id", unique: true
+    t.index ["type", "first_mount_id"], name: "index_relations_on_type_and_first_mount_id"
+    t.index ["type", "second_mount_id"], name: "index_relations_on_type_and_second_mount_id"
   end
 
   add_foreign_key "generations", "families"
