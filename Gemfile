@@ -6,7 +6,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.5.1"
 
 gem "rails", "~> 5.2.0"
-gem "jbuilder", "~> 2.7.0"
+gem "active_model_serializers", "~> 0.10.7"
+gem "kaminari", "~> 1.1.1"
 gem "mysql2", "~> 0.5.1"
 gem "puma", "~> 3.11"
 gem "mutations", "~> 0.8.2"

@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 class FamilyRelation < Relation
-  # first_mount will be the parent
-  # second_mount will be the child
   validate :first_mount, :mounts_must_have_same_family
   validate :second_mount, :mounts_must_have_same_family
+
+  def parent
+    first_mount
+  end
+
+  def child
+    second_mount
+  end
 
   private def mounts_must_have_same_family
     if first_mount.generation.family != second_mount.generation.family
