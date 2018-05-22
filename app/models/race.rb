@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
-class Family < ApplicationRecord
+class Race < ApplicationRecord
   has_many :generations, dependent: :destroy
+
+  validates :name, presence: true
 end

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-class CreateFamilies < ActiveRecord::Migration[5.2]
+class CreateRaces < ActiveRecord::Migration[5.2]
   def change
-    create_table :families do |t|
+    create_table :races do |t|
       t.string :name, null: false
 
       t.timestamps

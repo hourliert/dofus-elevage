@@ -2,10 +2,10 @@
 
 class CreateRelations < ActiveRecord::Migration[5.2]
   def change
-    create_table :relations, id: false do |t|
-      t.string :type
-      t.bigint :first_mount_id
-      t.bigint :second_mount_id
+    create_table :relations do |t|
+      t.string :type, null: false
+      t.bigint :first_mount_id, null: false
+      t.bigint :second_mount_id, null: false
       t.timestamps
     end
 

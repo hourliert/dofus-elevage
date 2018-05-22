@@ -2,6 +2,6 @@
 
 require "rails_helper"
 
-RSpec.describe FamiliesController do
+RSpec.describe RacesController do
 
 end

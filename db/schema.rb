@@ -12,35 +12,35 @@
 
 ActiveRecord::Schema.define(version: 2018_05_14_203909) do
 
-  create_table "families", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "generations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "image_url"
+    t.integer "level", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "family_id"
-    t.integer "level", default: 1, null: false
-    t.index ["family_id"], name: "index_generations_on_family_id"
+    t.bigint "race_id"
+    t.index ["race_id"], name: "index_generations_on_race_id"
   end
 
   create_table "mounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "sexe", null: false
+    t.string "name", null: false
+    t.string "sexe", default: "MALE", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "generation_id"
     t.index ["generation_id"], name: "index_mounts_on_generation_id"
   end
 
-  create_table "relations", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "type"
-    t.bigint "first_mount_id"
-    t.bigint "second_mount_id"
+  create_table "races", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "type", null: false
+    t.bigint "first_mount_id", null: false
+    t.bigint "second_mount_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["first_mount_id"], name: "fk_rails_8c7c6be751"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_05_14_203909) do
     t.index ["type", "second_mount_id"], name: "index_relations_on_type_and_second_mount_id"
   end
 
-  add_foreign_key "generations", "families"
+  add_foreign_key "generations", "races"
   add_foreign_key "mounts", "generations"
   add_foreign_key "relations", "mounts", column: "first_mount_id"
   add_foreign_key "relations", "mounts", column: "second_mount_id"
