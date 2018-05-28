@@ -152,6 +152,5 @@ Generation.create([
 
 generation = Generation.first
 
-mother = Breeding::Mount::Create.run!(name: "Mother", sexe: "FEMALE", generation_id: generation.id)
-father = Breeding::Mount::Create.run!(name: "Father", sexe: "MALE", generation_id: generation.id)
-Family::Child::Create.run!(name: "Child 1", sexe: "MALE", generation_id: generation.id, father_id: father.id, mother_id: mother.id)
+Breeding::Mount::Create.run!(name: "Mother", sexe: "FEMALE", generation_id: generation.id)
+Breeding::Mount::Create.run!(name: "Father", sexe: "MALE", generation_id: generation.id)

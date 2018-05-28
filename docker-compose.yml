@@ -3,7 +3,7 @@ services:
   mysql:
     image: mysql:5.7
     ports:
-      - 3306:3306
+      - 3307:3306
     volumes:
       - db-data:/var/lib/mysql
     environment:
@@ -11,11 +11,11 @@ services:
   redis:
     image: redis:4
     ports:
-      - 6379:6379
+      - 6380:6379
   memcached:
     image: memcached:1
     ports:
-      - 11211:11211
+      - 11212:11211
 
 volumes:
   db-data:
